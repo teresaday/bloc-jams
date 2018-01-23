@@ -29,6 +29,22 @@ var albumPicasso = {
      ]
  };
 
+ // Another Example Album
+ var albumOkcomputer = {
+     title: 'OK Computer',
+     artist: 'Radiohead',
+     label: 'EM',
+     year: '1997',
+     albumArtUrl: 'assets/images/album_covers/radiohead.jpg',
+     songs: [
+         { title: 'Airbag', duration: '4:44' },
+         { title: 'Paranoid Android', duration: '6:23' },
+         { title: 'Lucky', duration: '4:20'},
+         { title: 'The Tourist', duration: '5:25' },
+         { title: 'Karma Police', duration: '4:22'}
+     ]
+ };
+
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -66,4 +82,14 @@ var albumPicasso = {
 
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     var albumArray = [albumOkcomputer, albumMarconi, albumPicasso];
+	 var index = 0;
+
+	 document.getElementsByClassName('album-cover-art')[0].addEventListener("click", function(event) {
+	 	setCurrentAlbum(albumArray[index]);
+		index++;
+		if (index == albumArray.length) {
+			index = 0;
+		}
+  });
  };
