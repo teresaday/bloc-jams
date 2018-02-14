@@ -75,7 +75,7 @@ var createSongRow = function(songNumber, songName, songLength) {
        }
    };
 
- $row.find('song-item-number').click(clickHandler);
+ $row.find('.song-item-number').click(clickHandler);
  $row.hover(onHover, offHover);
  return $row;
 
