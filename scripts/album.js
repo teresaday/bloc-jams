@@ -36,7 +36,8 @@ var createSongRow = function(songNumber, songName, songLength) {
 			// Switch from Pause -> Play button to pause currently playing song.
 			$(this).html(playButtonTemplate);
 			$('.main-controls .play-pause').html(playerBarPlayButton);
-      setSong(null);
+			currentlyPlayingSongNumber = null;
+			currentSongFromAlbum = null;
 	}
 };
 
@@ -87,7 +88,7 @@ var setCurrentAlbum = function(album) {
 
 
      for (i = 0; i < album.songs.length; i++) {
-         var $newRow = createSongRow(i + 1, album.songs[i].name, album.songs[i].length);
+         var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
 		 $albumSongList.append($newRow);
      }
  };
