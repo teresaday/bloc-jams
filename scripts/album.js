@@ -1,3 +1,9 @@
+var seek = function(time) {
+	if (currentSoundFile) {
+		currentSoundFile.setTime(time);
+	}
+}
+
 var setSong = function(songNumber) {
 	if (currentSoundFile) {
 			currentSoundFile.stop();
@@ -17,6 +23,31 @@ var setVolume = function(volume) {
 		if (currentSoundFile) {
 				currentSoundFile.setVolume(volume);
 		}
+};
+
+var setCurrentTimeInPlayerBar = function(currentTime) {
+	$('.seek-control .current-time').text(currentTime);
+};
+
+var setTotalTimeInPlayerBar = function(totalTime) {
+	$('.seek-control .total-time').text(totalTime);
+};
+
+var filterTimeCode = function(timeInSeconds) {
+	var seconds = Number.parseFloat(timeInSeconds);
+	var wholeSeconds = Math.floor(seconds);
+	var minutes = Math.floor(wholeSeconds / 60);
+	var remainingSeconds = wholeSeconds % 60;
+
+	var output = minutes + ':';
+
+	if (remainingSeconds < 10) {
+		output += '0';
+	}
+
+	output += remainingSeconds;
+
+	return output;
 };
 
 var getSongNumberCell = function(number) {
